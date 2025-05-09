@@ -2,34 +2,34 @@ public with sharing class PseudoWordsUtil {
     
     public static String pseudoKeyGenerator(String record) {
 
-    String result = '';
-    List<String> process = new List<String>();
-    
-    if(record.contains(' ')){
-        process = record.split(' ');
-    }else{
-        process.add(record);
-    }
-
-    for(String word : process){
-        String firstLetter;
-        String lastLetter;
-        List<String> characters = word.split('');
-
-        if(word.length() == 1 || word.length() == 2 || word.length() == 3){
-            result += word + ' ';
-        }else if(word.length() == 4){
-            result += characters[0] + characters[2] + characters[1] + characters[3] + ' ';
+        String result = '';
+        List<String> process = new List<String>();
+        
+        if(record.contains(' ')){
+            process = record.split(' ');
         }else{
-            firstLetter = characters[0];
-            lastLetter = characters[word.length() - 1];
-            characters.remove(0);
-            characters.remove(characters.size() - 1);
-            String shuffledWord = shuffleWords(characters);
-            result += firstLetter + shuffledWord + lastLetter + ' ';
+            process.add(record);
         }
-    }
-        return result.removeEnd(' ');
+
+        for(String word : process){
+            String firstLetter;
+            String lastLetter;
+            List<String> characters = word.split('');
+
+            if(word.length() == 1 || word.length() == 2 || word.length() == 3){
+                result += word + ' ';
+            }else if(word.length() == 4){
+                result += characters[0] + characters[2] + characters[1] + characters[3] + ' ';
+            }else{
+                firstLetter = characters[0];
+                lastLetter = characters[word.length() - 1];
+                characters.remove(0);
+                characters.remove(characters.size() - 1);
+                String shuffledWord = shuffleWords(characters);
+                result += firstLetter + shuffledWord + lastLetter + ' ';
+            }
+        }
+            return result.removeEnd(' ');
     }
 
     public static String shuffleWords(List<String> words){
