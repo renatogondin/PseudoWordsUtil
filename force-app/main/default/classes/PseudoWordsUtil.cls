@@ -18,8 +18,6 @@ public with sharing class PseudoWordsUtil {
 
             if(word.length() == 1 || word.length() == 2 || word.length() == 3){
                 result += word + ' ';
-            }else if(word.length() == 4){
-                result += characters[0] + characters[2] + characters[1] + characters[3] + ' ';
             }else{
                 firstLetter = characters[0];
                 lastLetter = characters[word.length() - 1];
@@ -29,6 +27,7 @@ public with sharing class PseudoWordsUtil {
                 result += firstLetter + shuffledWord + lastLetter + ' ';
             }
         }
+        
             return result.removeEnd(' ');
     }
 
